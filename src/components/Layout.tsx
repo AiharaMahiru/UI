@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
+import { LayoutDashboard, Users, Settings, Bell, Search, Menu, X } from 'lucide-react';
 
 interface LayoutProps {
   children: ReactNode;
@@ -9,7 +10,7 @@ export function Layout({ children }: LayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
+    <div className="flex h-screen bg-slate-50 text-slate-900 font-sans">
       {/* Mobile Sidebar Overlay */}
       {sidebarOpen && (
         <div
@@ -21,45 +22,45 @@ export function Layout({ children }: LayoutProps) {
 
       {/* Sidebar */}
       <aside className={`
-        fixed inset-y-0 left-0 z-30 w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700
+        fixed inset-y-0 left-0 z-30 w-64 bg-white border-r border-slate-200
         transform transition-transform duration-200 ease-in-out md:translate-x-0 md:static md:flex flex-col
         ${sidebarOpen ? 'translate-x-0 shadow-xl' : '-translate-x-full'}
       `}>
-        <div className="p-6 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+        <div className="p-6 border-b border-slate-200 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">P</div>
-            <h1 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">Palette</h1>
+            <h1 className="text-xl font-bold tracking-tight text-slate-900">Palette</h1>
           </div>
           {/* Close button for mobile */}
           <button
-            className="md:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            className="md:hidden text-slate-500 hover:text-slate-700"
             onClick={() => setSidebarOpen(false)}
           >
-            ✕
+            <X size={24} />
           </button>
         </div>
 
         <nav className="flex-1 p-4 space-y-1">
-          <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
-            <span>📊</span>
+          <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-md bg-indigo-600 text-white font-medium transition-colors shadow-sm">
+            <LayoutDashboard size={20} />
             <span className="font-medium">Dashboard</span>
           </a>
-          <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
-            <span>👥</span>
+          <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-colors">
+            <Users size={20} />
             <span className="font-medium">Users</span>
           </a>
-          <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-md bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-medium transition-colors">
-            <span>⚙️</span>
+          <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-colors">
+            <Settings size={20} />
             <span className="font-medium">Settings</span>
           </a>
         </nav>
 
-        <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="p-4 border-t border-slate-200">
           <div className="flex items-center gap-3">
-             <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-600"></div>
+             <div className="w-8 h-8 rounded-full bg-slate-200"></div>
              <div className="text-sm">
-                <p className="font-medium">Admin User</p>
-                <p className="text-gray-500 dark:text-gray-400 text-xs">admin@palette.dev</p>
+                <p className="font-medium text-slate-900">Admin User</p>
+                <p className="text-slate-500 text-xs">admin@palette.dev</p>
              </div>
           </div>
         </div>
@@ -67,22 +68,39 @@ export function Layout({ children }: LayoutProps) {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        <header className="h-16 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6">
-          <div className="md:hidden">
-            <button
-              onClick={() => setSidebarOpen(true)}
-              className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
-              aria-label="Open menu"
-            >
-              ☰
-            </button>
+        <header className="h-16 sticky top-0 z-10 bg-white/80 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-6">
+          <div className="flex items-center gap-4 w-full">
+            <div className="md:hidden">
+              <button
+                onClick={() => setSidebarOpen(true)}
+                className="p-2 rounded-md hover:bg-slate-100 text-slate-500"
+                aria-label="Open menu"
+              >
+                <Menu size={24} />
+              </button>
+            </div>
+
+            {/* Search */}
+            <div className="flex-1 max-w-md hidden md:flex items-center relative">
+               <div className="absolute left-3 text-slate-400">
+                  <Search size={18} />
+               </div>
+               <input
+                 type="text"
+                 placeholder="Search..."
+                 className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+               />
+            </div>
           </div>
-          <div className="flex-1"></div>
+
           <div className="flex items-center space-x-4">
-             <button className="relative p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500">
+            <button className="md:hidden p-2 text-slate-500 hover:bg-slate-100 rounded-full">
+               <Search size={20} />
+            </button>
+             <button className="relative p-2 rounded-full hover:bg-slate-100 text-slate-500 transition-colors">
                 <span className="sr-only">Notifications</span>
-                🔔
-                <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-gray-800"></span>
+                <Bell size={20} />
+                <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
              </button>
           </div>
         </header>
