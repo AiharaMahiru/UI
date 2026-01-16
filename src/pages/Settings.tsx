@@ -20,18 +20,18 @@ export function Settings() {
 
   return (
     <div className="max-w-2xl">
-      <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">Settings</h2>
+      <h2 className="text-2xl font-bold tracking-tight text-slate-900 mb-6">Settings</h2>
 
-      <div className="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-200 dark:border-gray-700">
-        <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-          <h3 className="text-lg font-medium text-gray-900 dark:text-white">Profile Information</h3>
-          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Update your account's profile information and email address.</p>
+      <div className="bg-white shadow-sm rounded-xl border border-slate-200">
+        <div className="p-6 border-b border-slate-200">
+          <h3 className="text-lg font-medium text-slate-900">Profile Information</h3>
+          <p className="mt-1 text-sm text-slate-500">Update your account's profile information and email address.</p>
         </div>
 
         <div className="p-6 space-y-6">
           <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
             <div className="sm:col-span-3">
-              <label htmlFor="first-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label htmlFor="first-name" className="block text-sm font-medium text-slate-700">
                 First name
               </label>
               <div className="mt-1">
@@ -41,13 +41,13 @@ export function Settings() {
                   id="first-name"
                   autoComplete="given-name"
                   defaultValue="Jules"
-                  className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm p-2 border"
+                  className="block w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border"
                 />
               </div>
             </div>
 
             <div className="sm:col-span-3">
-              <label htmlFor="last-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label htmlFor="last-name" className="block text-sm font-medium text-slate-700">
                 Last name
               </label>
               <div className="mt-1">
@@ -57,13 +57,13 @@ export function Settings() {
                   id="last-name"
                   autoComplete="family-name"
                   defaultValue="Agent"
-                  className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm p-2 border"
+                  className="block w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border"
                 />
               </div>
             </div>
 
             <div className="sm:col-span-6">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label htmlFor="email" className="block text-sm font-medium text-slate-700">
                 Email address
               </label>
               <div className="mt-1">
@@ -73,18 +73,18 @@ export function Settings() {
                   type="email"
                   autoComplete="email"
                   defaultValue="jules@palette.dev"
-                  className="block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm p-2 border"
+                  className="block w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border"
                 />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="px-6 py-4 bg-gray-50 dark:bg-gray-900/50 rounded-b-xl flex items-center justify-between">
+        <div className="px-6 py-4 bg-slate-50 rounded-b-xl flex items-center justify-between border-t border-slate-200">
             {/* Success Message Live Region */}
             <div role="status" aria-live="polite" className="text-sm min-h-[20px]">
                 {showSuccess && (
-                    <span className="flex items-center text-green-600 dark:text-green-400 font-medium animate-pulse">
+                    <span className="flex items-center text-green-600 font-medium animate-pulse">
                         <svg className="w-4 h-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>

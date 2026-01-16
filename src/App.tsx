@@ -1,10 +1,10 @@
 import { Layout } from './components/Layout';
-import { Settings } from './pages/Settings';
+import { Dashboard } from './pages/Dashboard';
 
 function App() {
   return (
     <Layout>
-      <Settings />
+      <Dashboard />
     </Layout>
   );
 }
