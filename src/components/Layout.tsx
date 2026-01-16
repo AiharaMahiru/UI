@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
-import { LayoutDashboard, Users, Settings, Bell, Search, Menu, X } from 'lucide-react';
+import { LayoutDashboard, Users, Settings, Bell, Search, Menu, X, BookOpen, Wrench } from 'lucide-react';
 
 interface LayoutProps {
   children: ReactNode;
   currentPage: string;
-  onNavigate: (page: 'dashboard' | 'users' | 'settings') => void;
+  onNavigate: (page: 'dashboard' | 'users' | 'settings' | 'blog' | 'toolbox') => void;
 }
 
 export function Layout({ children, currentPage, onNavigate }: LayoutProps) {
@@ -14,6 +14,8 @@ export function Layout({ children, currentPage, onNavigate }: LayoutProps) {
   const navItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'users', label: 'Users', icon: Users },
+    { id: 'blog', label: 'Blog', icon: BookOpen },
+    { id: 'toolbox', label: 'Toolbox', icon: Wrench },
     { id: 'settings', label: 'Settings', icon: Settings },
   ] as const;
 
