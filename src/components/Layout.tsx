@@ -4,10 +4,18 @@ import { LayoutDashboard, Users, Settings, Bell, Search, Menu, X } from 'lucide-
 
 interface LayoutProps {
   children: ReactNode;
+  currentPage: string;
+  onNavigate: (page: 'dashboard' | 'users' | 'settings') => void;
 }
 
-export function Layout({ children }: LayoutProps) {
+export function Layout({ children, currentPage, onNavigate }: LayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const navItems = [
+    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { id: 'users', label: 'Users', icon: Users },
+    { id: 'settings', label: 'Settings', icon: Settings },
+  ] as const;
 
   return (
     <div className="flex h-screen bg-slate-50 text-slate-900 font-sans">
@@ -41,18 +49,23 @@ export function Layout({ children }: LayoutProps) {
         </div>
 
         <nav className="flex-1 p-4 space-y-1">
-          <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-md bg-indigo-600 text-white font-medium transition-colors shadow-sm">
-            <LayoutDashboard size={20} />
-            <span className="font-medium">Dashboard</span>
-          </a>
-          <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-colors">
-            <Users size={20} />
-            <span className="font-medium">Users</span>
-          </a>
-          <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-colors">
-            <Settings size={20} />
-            <span className="font-medium">Settings</span>
-          </a>
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => {
+                onNavigate(item.id);
+                setSidebarOpen(false);
+              }}
+              className={`w-full flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
+                currentPage === item.id
+                  ? 'bg-indigo-600 text-white font-medium shadow-sm'
+                  : 'hover:bg-slate-100 text-slate-500 hover:text-slate-900'
+              }`}
+            >
+              <item.icon size={20} />
+              <span className="font-medium">{item.label}</span>
+            </button>
+          ))}
         </nav>
 
         <div className="p-4 border-t border-slate-200">
